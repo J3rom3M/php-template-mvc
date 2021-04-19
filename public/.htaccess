@@ -1,0 +1,20 @@
+RewriteEngine On
+
+# dynamically setup base URI
+# Récupérer la fin de l'URL
+RewriteCond %{REQUEST_URI}::$1 ^(/.+)/(.*)::\2$
+RewriteRule ^(.*) - [E=BASE_URI:%1]
+
+# redirect every request to index.php
+# and give the relative URL in "_url" GET param
+
+# Activer la réécriture d'URL SEULEMENT si l'URL demandée
+# n'est pas un dossier qui existe
+RewriteCond %{REQUEST_FILENAME} !-d
+# Activer la réécriture d'URL SEULEMENT si l'URL demandée
+# n'est pas un fichier qui existe
+RewriteCond %{REQUEST_FILENAME} !-f
+
+# Réécrire l'URL en remplacant la fin par
+# index.php?_url=/url-tapee-par-internaute
+RewriteRule ^(.*)$ index.php?_url=/$1 [QSA,L]

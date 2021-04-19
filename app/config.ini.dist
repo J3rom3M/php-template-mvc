@@ -1,0 +1,7 @@
+; Fichier de configuration de l'application qui peut contenir les informations de connexion à la base de données
+; Le fichier dist est exemple de fichier de configuration vide qu'il faut copier dans le fichier du même nom (sans .dist) tout en complétant les valeurs
+
+DB_HOST =
+DB_NAME =
+DB_USERNAME =
+DB_PASSWORD =
